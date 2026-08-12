@@ -3,31 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Kasukurthi Sriram — Cybersecurity Engineer</title>
-<meta name="description" content="Cybersecurity-focused software engineer specializing in detection engineering, deception technologies, and AI-driven threat intelligence.">
-<meta name="keywords" content="cybersecurity, software engineer, threat detection, honeypot, security engineering">
+<title>Kasukurthi Sriram — SOC Analyst & Security Engineer</title>
+<meta name="description" content="SOC Analyst with hands-on experience in threat detection, incident response, detection engineering, and AI-driven security platforms. B.Tech Cybersecurity student building real defense systems.">
+<meta name="keywords" content="SOC analyst, cybersecurity engineer, detection engineering, honeypot, threat detection, incident response, security engineer, SIEM, Splunk">
 <meta name="author" content="Kasukurthi Sriram">
-<meta property="og:title" content="Kasukurthi Sriram — Cybersecurity Engineer">
-<meta property="og:description" content="Building intelligent defense systems that turn hostile interaction into actionable intelligence.">
+<meta property="og:title" content="Kasukurthi Sriram — SOC Analyst & Security Engineer">
+<meta property="og:description" content="SOC Analyst building detection systems, honeypot platforms, and AI-driven threat intelligence. View projects and experience.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://sriram21-09.github.io">
+<link rel="canonical" href="https://sriram21-09.github.io">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="nav" id="navbar">
+<nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
 <div class="container nav-inner">
-  <a href="#hero" class="nav-logo">&lt;KS /&gt;</a>
+  <a href="#hero" class="nav-logo" aria-label="Kasukurthi Sriram — Home">
+    <span class="logo-bracket">&lt;</span><span class="logo-text">Kasukurthi Sriram</span><span class="logo-bracket"> /&gt;</span>
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
     <li><a href="#github">GitHub</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </div>
@@ -36,7 +41,7 @@
 <!-- HERO -->
 <section class="hero" id="hero">
 <div class="hero-bg">
-  <canvas id="heroCanvas"></canvas>
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="hero-glow hero-glow-1"></div>
   <div class="hero-glow hero-glow-2"></div>
   <div class="hero-glow hero-glow-3"></div>
@@ -46,16 +51,16 @@
     <div class="hero-badge"><span class="pulse"></span> Available for opportunities</div>
     <h1 class="hero-title">Hi, I'm <span class="gradient-text">Kasukurthi Sriram</span></h1>
     <div class="hero-subtitle"><span id="typingText"></span><span class="cursor"></span></div>
-    <p class="hero-description">Building intelligent defense systems that turn hostile interaction into actionable intelligence. Specializing in detection engineering, deception technologies, and AI-driven threat intelligence platforms.</p>
+    <p class="hero-description">SOC Analyst with hands-on experience in threat detection, incident response, and SIEM platforms. Building detection systems and AI-driven honeypot platforms that capture, analyze, and respond to threats.</p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">⚡ View Projects</a>
       <a href="#contact" class="btn btn-outline">💬 Get In Touch</a>
     </div>
     <div class="hero-stats">
+      <div><div class="hero-stat-value" data-count="6" data-suffix="+">0</div><div class="hero-stat-label">Security Projects</div></div>
+      <div><div class="hero-stat-value" data-count="6" data-suffix="+">0</div><div class="hero-stat-label">Internships & Roles</div></div>
+      <div><div class="hero-stat-value" data-count="4" data-suffix="+">0</div><div class="hero-stat-label">Certifications</div></div>
       <div><div class="hero-stat-value" data-count="11" data-suffix="+">0</div><div class="hero-stat-label">Repositories</div></div>
-      <div><div class="hero-stat-value" data-count="347" data-suffix="+">0</div><div class="hero-stat-label">Source Files</div></div>
-      <div><div class="hero-stat-value" data-count="125" data-suffix="+">0</div><div class="hero-stat-label">Docs Written</div></div>
-      <div><div class="hero-stat-value" data-count="4">0</div><div class="hero-stat-label">Internships</div></div>
     </div>
   </div>
   <div class="hero-terminal" aria-hidden="true">
@@ -65,20 +70,20 @@
     </div>
     <div class="terminal-body" id="terminalBody">
       <div class="terminal-line"><span class="t-gray">#!/usr/bin/env python3</span></div>
-      <div class="terminal-line"><span class="t-purple">from</span> <span class="t-cyan">phantomnet.core</span> <span class="t-purple">import</span> ThreatEngine</div>
-      <div class="terminal-line"><span class="t-purple">from</span> <span class="t-cyan">phantomnet.ml</span> <span class="t-purple">import</span> EnsembleScorer</div>
+      <div class="terminal-line"><span class="t-purple">from</span> <span class="t-cyan">backend.ml.threat_scoring_service</span> <span class="t-purple">import</span> ThreatScorer</div>
+      <div class="terminal-line"><span class="t-purple">from</span> <span class="t-cyan">backend.ml_engine.explainability</span> <span class="t-purple">import</span> SHAPExplainer</div>
       <div class="terminal-line"></div>
-      <div class="terminal-line"><span class="t-cyan">engine</span> = ThreatEngine(<span class="t-green">protocols</span>=<span class="t-yellow">[</span><span class="t-green">"ssh"</span>, <span class="t-green">"http"</span>, <span class="t-green">"ftp"</span>, <span class="t-green">"smtp"</span><span class="t-yellow">]</span>)</div>
-      <div class="terminal-line"><span class="t-cyan">scorer</span> = EnsembleScorer(<span class="t-green">explainer</span>=<span class="t-green">"shap"</span>)</div>
+      <div class="terminal-line"><span class="t-cyan">scorer</span> = ThreatScorer(<span class="t-green">models</span>=<span class="t-yellow">[</span><span class="t-green">"rf"</span>, <span class="t-green">"isolation_forest"</span><span class="t-yellow">]</span>)</div>
+      <div class="terminal-line"><span class="t-cyan">explainer</span> = SHAPExplainer()</div>
       <div class="terminal-line"></div>
-      <div class="terminal-line"><span class="t-gray"># Real-time threat analysis pipeline</span></div>
-      <div class="terminal-line"><span class="t-purple">async for</span> <span class="t-cyan">event</span> <span class="t-purple">in</span> engine.stream():</div>
+      <div class="terminal-line"><span class="t-gray"># Process honeypot events through ML pipeline</span></div>
+      <div class="terminal-line"><span class="t-purple">async for</span> <span class="t-cyan">event</span> <span class="t-purple">in</span> honeypot.stream():</div>
       <div class="terminal-line">    <span class="t-cyan">score</span> = <span class="t-purple">await</span> scorer.analyze(event)</div>
       <div class="terminal-line">    <span class="t-purple">if</span> score.threat_level > <span class="t-yellow">0.85</span>:</div>
-      <div class="terminal-line">        engine.respond(score.playbook)</div>
+      <div class="terminal-line">        explainer.explain(score)</div>
       <div class="terminal-line"></div>
       <div class="terminal-line t-log"><span class="t-green">▶</span> <span class="t-gray">[INFO]</span> Engine initialized — 4 honeypots active</div>
-      <div class="terminal-line t-log"><span class="t-green">▶</span> <span class="t-gray">[INFO]</span> ML ensemble loaded — 16ms latency</div>
+      <div class="terminal-line t-log"><span class="t-green">▶</span> <span class="t-gray">[INFO]</span> ML ensemble loaded (RF + IF + SHAP)</div>
       <div class="terminal-line t-log" id="terminalLive"></div>
     </div>
   </div>
@@ -94,20 +99,15 @@
   </div>
   <div class="about-grid">
     <div class="about-text reveal">
-      <p>I'm a <strong>cybersecurity-focused software engineer</strong> currently studying at <strong>Parul University, Vadodara</strong>. My engineering philosophy centers on building systems that are secure by design — not as an afterthought.</p>
-      <p>I specialize in <strong>detection engineering</strong>, <strong>deception technologies</strong>, and <strong>AI-driven threat intelligence</strong>. My flagship project, PhantomNet, deploys intelligent honeypots that trap, analyze, and respond to threats using ML ensemble scoring with SHAP explainability.</p>
-      <p>Beyond cybersecurity, I build full-stack applications with a focus on <strong>clean architecture</strong>, <strong>performance optimization</strong>, and <strong>production-grade engineering practices</strong>. I believe great security engineers must first be great software engineers.</p>
+      <p>I'm a <strong>SOC Analyst and cybersecurity engineering student</strong> at <strong>Parul University, Vadodara</strong> (B.Tech CS — Cybersecurity, graduating Sep 2027). My engineering philosophy: security should be the architecture, not an afterthought.</p>
+      <p>I specialize in <strong>detection engineering</strong>, <strong>SOC operations</strong>, and <strong>threat detection & response</strong>. My flagship project, PhantomNet, deploys intelligent honeypots that trap, analyze, and score threats using ML ensemble models with SHAP explainability — going beyond passive logging toward active intelligence generation.</p>
+      <p>I work with <strong>SIEM platforms</strong> (Splunk, ELK Stack, Wazuh), security frameworks (<strong>MITRE ATT&CK</strong>, <strong>OWASP Top 10</strong>, <strong>NIST CSF</strong>), and build full-stack security applications with clean architecture and production-grade practices.</p>
     </div>
     <div class="about-metrics reveal reveal-delay-2">
       <div class="metric-card">
         <div class="metric-icon">🛡️</div>
         <div class="metric-value" data-count="4">0</div>
         <div class="metric-label">Protocol Honeypots Built</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-icon">⚡</div>
-        <div class="metric-value" data-count="14681" data-suffix="">0</div>
-        <div class="metric-label">Events/sec Throughput</div>
       </div>
       <div class="metric-card">
         <div class="metric-icon">🧠</div>
@@ -117,7 +117,12 @@
       <div class="metric-card">
         <div class="metric-icon">📊</div>
         <div class="metric-value" data-count="20" data-suffix="+">0</div>
-        <div class="metric-label">REST API Endpoints</div>
+        <div class="metric-label">API Endpoints Built</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon">🔧</div>
+        <div class="metric-value" data-count="21" data-suffix="+">0</div>
+        <div class="metric-label">Development Sprints</div>
       </div>
     </div>
   </div>
@@ -130,61 +135,64 @@
   <div class="section-header reveal">
     <div class="section-label">Technical Arsenal</div>
     <h2 class="section-title">Skills & <span class="gradient-text">Technologies</span></h2>
-    <p class="section-subtitle">Technologies I use to build secure, scalable, and intelligent systems.</p>
+    <p class="section-subtitle">Tools and technologies I use to build, defend, and analyze security systems.</p>
   </div>
   <div class="skills-grid">
     <div class="skill-card reveal">
       <div class="skill-card-icon">🔐</div>
-      <h3 class="skill-card-title">Cybersecurity</h3>
+      <h3 class="skill-card-title">SOC & Defensive Security</h3>
       <div class="skill-tags">
-        <span class="skill-tag">Threat Detection</span><span class="skill-tag">Honeypot Design</span>
-        <span class="skill-tag">SIEM Integration</span><span class="skill-tag">Incident Response</span>
-        <span class="skill-tag">Network Security</span><span class="skill-tag">Deception Engineering</span>
+        <span class="skill-tag">SOC Operations</span><span class="skill-tag">Detection Engineering</span>
+        <span class="skill-tag">Threat Detection</span><span class="skill-tag">Incident Response</span>
+        <span class="skill-tag">Alert Triage</span><span class="skill-tag">Log Analysis</span>
+        <span class="skill-tag">MITRE ATT&CK</span><span class="skill-tag">OWASP Top 10</span>
       </div>
     </div>
     <div class="skill-card reveal reveal-delay-1">
-      <div class="skill-card-icon">⚙️</div>
-      <h3 class="skill-card-title">Backend Engineering</h3>
+      <div class="skill-card-icon">📡</div>
+      <h3 class="skill-card-title">SIEM & Security Tools</h3>
       <div class="skill-tags">
-        <span class="skill-tag">Python</span><span class="skill-tag">FastAPI</span>
-        <span class="skill-tag">SQLAlchemy</span><span class="skill-tag">REST APIs</span>
-        <span class="skill-tag">WebSockets</span><span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">Splunk</span><span class="skill-tag">ELK Stack</span>
+        <span class="skill-tag">Wazuh</span><span class="skill-tag">Wireshark</span>
+        <span class="skill-tag">Nmap</span><span class="skill-tag">Burp Suite</span>
+        <span class="skill-tag">OWASP ZAP</span><span class="skill-tag">Metasploit</span>
       </div>
     </div>
     <div class="skill-card reveal reveal-delay-2">
-      <div class="skill-card-icon">🎨</div>
-      <h3 class="skill-card-title">Frontend Development</h3>
+      <div class="skill-card-icon">🌐</div>
+      <h3 class="skill-card-title">Network Security</h3>
       <div class="skill-tags">
-        <span class="skill-tag">React</span><span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">Vite</span><span class="skill-tag">Tailwind CSS</span>
-        <span class="skill-tag">HTML/CSS/JS</span><span class="skill-tag">Recharts</span>
+        <span class="skill-tag">TCP/IP Analysis</span><span class="skill-tag">Traffic Analysis</span>
+        <span class="skill-tag">Firewalls</span><span class="skill-tag">IDS/IPS</span>
+        <span class="skill-tag">DNS Security</span><span class="skill-tag">Scapy</span>
       </div>
     </div>
     <div class="skill-card reveal">
+      <div class="skill-card-icon">⚙️</div>
+      <h3 class="skill-card-title">Backend & Programming</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span><span class="skill-tag">Java</span>
+        <span class="skill-tag">FastAPI</span><span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">REST APIs</span><span class="skill-tag">Bash</span>
+        <span class="skill-tag">PowerShell</span><span class="skill-tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-card reveal reveal-delay-1">
       <div class="skill-card-icon">🧠</div>
       <h3 class="skill-card-title">AI / Machine Learning</h3>
       <div class="skill-tags">
         <span class="skill-tag">Scikit-Learn</span><span class="skill-tag">TensorFlow</span>
         <span class="skill-tag">SHAP</span><span class="skill-tag">MLflow</span>
-        <span class="skill-tag">DBSCAN</span><span class="skill-tag">NLP</span>
-      </div>
-    </div>
-    <div class="skill-card reveal reveal-delay-1">
-      <div class="skill-card-icon">☁️</div>
-      <h3 class="skill-card-title">DevOps & Cloud</h3>
-      <div class="skill-tags">
-        <span class="skill-tag">Docker</span><span class="skill-tag">Docker Compose</span>
-        <span class="skill-tag">GitHub Actions</span><span class="skill-tag">CI/CD</span>
-        <span class="skill-tag">Linux</span><span class="skill-tag">Shell Scripting</span>
+        <span class="skill-tag">Ensemble Methods</span><span class="skill-tag">NLP</span>
       </div>
     </div>
     <div class="skill-card reveal reveal-delay-2">
-      <div class="skill-card-icon">🔧</div>
-      <h3 class="skill-card-title">Security Tools</h3>
+      <div class="skill-card-icon">☁️</div>
+      <h3 class="skill-card-title">DevOps & Frontend</h3>
       <div class="skill-tags">
-        <span class="skill-tag">Wireshark</span><span class="skill-tag">Nmap</span>
-        <span class="skill-tag">Burp Suite</span><span class="skill-tag">Metasploit</span>
-        <span class="skill-tag">TryHackMe</span><span class="skill-tag">Scapy</span>
+        <span class="skill-tag">Docker</span><span class="skill-tag">GitHub Actions</span>
+        <span class="skill-tag">CI/CD</span><span class="skill-tag">Linux</span>
+        <span class="skill-tag">React</span><span class="skill-tag">TypeScript</span>
       </div>
     </div>
   </div>
@@ -197,60 +205,61 @@
   <div class="section-header reveal">
     <div class="section-label">Featured Work</div>
     <h2 class="section-title">Projects & <span class="gradient-text">Systems</span></h2>
-    <p class="section-subtitle">Enterprise-grade systems built with security-first architecture.</p>
+    <p class="section-subtitle">Security systems built with detection-first architecture and verified engineering.</p>
   </div>
 
   <!-- PhantomNet Featured -->
   <div class="project-featured reveal">
-    <div class="project-featured-badge">★ Flagship Project</div>
+    <div class="project-featured-badge">★ Flagship Project · Academic Capstone</div>
     <h3 class="project-featured-title">🛡️ PhantomNet</h3>
-    <p class="project-featured-desc">Distributed Deception & AI-Powered Threat Intelligence Platform — deploys intelligent honeypots to trap, analyze, and respond to network threats in real time. Features a 3-layer decoupled architecture ensuring that compromised honeypots cannot reach the intelligence backend.</p>
+    <p class="project-featured-desc">AI-Driven Distributed Honeypot & Threat Detection Platform — deploys intelligent honeypots across SSH, HTTP, FTP, and SMTP to capture, analyze, and respond to network threats. Features a decoupled architecture ensuring honeypot compromise cannot reach the intelligence backend.</p>
 
     <div class="project-features">
       <div class="project-feature">
         <div class="project-feature-icon">🕸️</div>
-        <div class="project-feature-text"><strong>4-Protocol Honeypots</strong>SSH, HTTP, FTP, SMTP traps in Docker containers with resource isolation</div>
+        <div class="project-feature-text"><strong>4-Protocol Honeypots</strong>SSH, HTTP, FTP, SMTP traps in Docker containers with per-service Dockerfiles</div>
       </div>
       <div class="project-feature">
         <div class="project-feature-icon">🧠</div>
-        <div class="project-feature-text"><strong>ML Ensemble Scoring</strong>Random Forest + Isolation Forest + LSTM with SHAP explainability</div>
+        <div class="project-feature-text"><strong>ML Threat Scoring</strong>Random Forest + Isolation Forest ensemble with SHAP explainability and LSTM temporal analysis</div>
       </div>
       <div class="project-feature">
         <div class="project-feature-icon">⚡</div>
-        <div class="project-feature-text"><strong>Automated Response</strong>YAML playbooks with IP blocking, rate limiting, PCAP capture</div>
+        <div class="project-feature-text"><strong>TAXII/STIX 2.1</strong>Industry-standard threat intelligence export with MITRE ATT&CK v14 mappings</div>
       </div>
       <div class="project-feature">
         <div class="project-feature-icon">📊</div>
-        <div class="project-feature-text"><strong>SOC Dashboard</strong>React 19 dashboard with WebSocket streaming & GeoIP attack map</div>
+        <div class="project-feature-text"><strong>SOC Dashboard</strong>React dashboard with WebSocket streaming, GeoIP attack mapping, and real-time alerts</div>
       </div>
       <div class="project-feature">
         <div class="project-feature-icon">🔗</div>
-        <div class="project-feature-text"><strong>STIX 2.1 Export</strong>Industry-standard threat intelligence sharing with SIEM integration</div>
+        <div class="project-feature-text"><strong>20+ API Endpoints</strong>FastAPI backend: alerts, hunting, cases, PCAP capture, topology, predictive analytics</div>
       </div>
       <div class="project-feature">
         <div class="project-feature-icon">🔐</div>
-        <div class="project-feature-text"><strong>JWT + RBAC Security</strong>Role-based access with Docker network isolation & Bandit scanning</div>
+        <div class="project-feature-text"><strong>JWT + RBAC Security</strong>Role-based access control with auth middleware and CI/CD via GitHub Actions</div>
       </div>
     </div>
 
     <div class="project-tech">
       <span class="project-tech-tag">Python</span><span class="project-tech-tag">FastAPI</span>
-      <span class="project-tech-tag">React 19</span><span class="project-tech-tag">PostgreSQL</span>
+      <span class="project-tech-tag">React</span><span class="project-tech-tag">PostgreSQL</span>
       <span class="project-tech-tag">Docker</span><span class="project-tech-tag">Scikit-Learn</span>
       <span class="project-tech-tag">TensorFlow</span><span class="project-tech-tag">SHAP</span>
       <span class="project-tech-tag">MLflow</span><span class="project-tech-tag">Scapy</span>
+      <span class="project-tech-tag">ELK Stack</span>
     </div>
 
     <div class="project-links">
-      <a href="https://github.com/sriram21-09/PhantomNet" target="_blank" class="btn btn-primary">🔗 View on GitHub</a>
+      <a href="https://github.com/sriram21-09/PhantomNet" target="_blank" rel="noopener noreferrer" class="btn btn-primary">🔗 View on GitHub</a>
     </div>
 
     <div class="project-metrics">
-      <div class="project-metric"><div class="project-metric-value" data-count="14681">0</div><div class="project-metric-label">events/sec</div></div>
-      <div class="project-metric"><div class="project-metric-value" data-count="347" data-suffix="+">0</div><div class="project-metric-label">source files</div></div>
-      <div class="project-metric"><div class="project-metric-value" data-count="16" data-suffix="ms">0</div><div class="project-metric-label">ML latency</div></div>
-      <div class="project-metric"><div class="project-metric-value" data-count="85" data-suffix="%">0</div><div class="project-metric-label">accuracy</div></div>
-      <div class="project-metric"><div class="project-metric-value" data-count="125" data-suffix="+">0</div><div class="project-metric-label">docs</div></div>
+      <div class="project-metric"><div class="project-metric-value" data-count="4">0</div><div class="project-metric-label">honeypots</div></div>
+      <div class="project-metric"><div class="project-metric-value" data-count="3">0</div><div class="project-metric-label">ML models</div></div>
+      <div class="project-metric"><div class="project-metric-value" data-count="20" data-suffix="+">0</div><div class="project-metric-label">API endpoints</div></div>
+      <div class="project-metric"><div class="project-metric-value" data-count="21" data-suffix="+">0</div><div class="project-metric-label">dev sprints</div></div>
+      <div class="project-metric"><div class="project-metric-value" data-count="2">0</div><div class="project-metric-label">stars</div></div>
     </div>
   </div>
 
@@ -258,44 +267,44 @@
   <div class="projects-grid">
     <div class="project-card reveal">
       <div class="project-card-header">
-        <div class="project-card-icon">🏥</div>
-        <div class="project-card-links"><a href="https://github.com/sriram21-09/AI-Powered-Health-Assistant" target="_blank">↗</a></div>
+        <div class="project-card-icon">🔍</div>
+        <div class="project-card-links"><a href="https://github.com/sriram21-09/Asterion" target="_blank" rel="noopener noreferrer" aria-label="View Asterion on GitHub">↗</a></div>
       </div>
-      <h3 class="project-card-title">AI Health Assistant</h3>
-      <p class="project-card-desc">Premium symptom analysis platform powered by Gemini 2.0 Flash. Features NLP preprocessing with negation detection, synonym expansion, voice dictation, and zero-fail dual-engine diagnostics with offline fallback.</p>
+      <h3 class="project-card-title">Asterion</h3>
+      <p class="project-card-desc">Telecom localization & investigation support platform built for E-Rakshak 2026 hackathon. Demonstrates scientific multilateration, Kalman tracking, and evidence-based localization for law enforcement use cases.</p>
       <div class="project-card-tech">
-        <span>React</span><span>TypeScript</span><span>Vite</span><span>Gemini AI</span><span>NLP</span>
+        <span>Python</span><span>FastAPI</span><span>React</span><span>Multilateration</span>
       </div>
     </div>
     <div class="project-card reveal reveal-delay-1">
       <div class="project-card-header">
-        <div class="project-card-icon">📡</div>
-        <div class="project-card-links"><a href="https://github.com/sriram21-09/PRODIGY_CS_05" target="_blank">↗</a></div>
+        <div class="project-card-icon">🏥</div>
+        <div class="project-card-links"><a href="https://github.com/sriram21-09/AI-Powered-Health-Assistant" target="_blank" rel="noopener noreferrer" aria-label="View AI Health Assistant on GitHub">↗</a></div>
       </div>
-      <h3 class="project-card-title">Network Packet Analyzer</h3>
-      <p class="project-card-desc">Network monitoring and packet analysis tool built during Prodigy InfoTech cybersecurity internship. Captures and inspects network traffic for threat detection and protocol analysis.</p>
+      <h3 class="project-card-title">AI Health Assistant</h3>
+      <p class="project-card-desc">AI-assisted symptom analysis using Gemini 2.0 Flash. Features NLP preprocessing with negation detection, voice dictation input, and offline fallback diagnostics. Built during AICTE TechSaksham internship.</p>
       <div class="project-card-tech">
-        <span>Shell</span><span>Networking</span><span>Packet Analysis</span><span>Linux</span>
+        <span>React</span><span>TypeScript</span><span>Gemini AI</span><span>NLP</span>
       </div>
     </div>
     <div class="project-card reveal reveal-delay-2">
       <div class="project-card-header">
-        <div class="project-card-icon">📱</div>
-        <div class="project-card-links"><a href="https://github.com/sriram21-09" target="_blank">↗</a></div>
+        <div class="project-card-icon">📡</div>
+        <div class="project-card-links"><a href="https://github.com/sriram21-09/PRODIGY_CS_05" target="_blank" rel="noopener noreferrer" aria-label="View Network Packet Analyzer on GitHub">↗</a></div>
       </div>
-      <h3 class="project-card-title">Content Automation Platform</h3>
-      <p class="project-card-desc">Google Apps Script-based automation pipeline integrating AI services for intelligent content generation, Instagram API integration, and Google Slides/Sheets orchestration.</p>
+      <h3 class="project-card-title">Network Packet Analyzer</h3>
+      <p class="project-card-desc">Network monitoring and packet capture tool for protocol analysis and threat detection. Built during Prodigy InfoTech cybersecurity internship.</p>
       <div class="project-card-tech">
-        <span>Apps Script</span><span>AI APIs</span><span>Instagram API</span><span>Automation</span>
+        <span>Shell</span><span>Linux</span><span>Packet Analysis</span><span>Networking</span>
       </div>
     </div>
     <div class="project-card reveal reveal-delay-3">
       <div class="project-card-header">
         <div class="project-card-icon">🔑</div>
-        <div class="project-card-links"><a href="https://github.com/sriram21-09/PRODIGY_CS_04" target="_blank">↗</a></div>
+        <div class="project-card-links"><a href="https://github.com/sriram21-09/PRODIGY_CS_04" target="_blank" rel="noopener noreferrer" aria-label="View Security Tools on GitHub">↗</a></div>
       </div>
       <h3 class="project-card-title">Security Assessment Tools</h3>
-      <p class="project-card-desc">Collection of cybersecurity utilities developed during internship programs. Includes keylogger analysis, password strength checkers, and network security assessment scripts.</p>
+      <p class="project-card-desc">Security utilities including password strength validation and network security assessment scripts. Built during cybersecurity internship program.</p>
       <div class="project-card-tech">
         <span>Shell</span><span>Python</span><span>Security</span><span>Scripting</span>
       </div>
@@ -316,20 +325,30 @@
       <div class="timeline-dot"></div>
       <div class="timeline-date">2026 — Present</div>
       <div class="timeline-card">
-        <div class="timeline-title">Platform Architecture & Security Design Lead</div>
-        <div class="timeline-org">PhantomNet — Capstone Project, Parul University</div>
-        <div class="timeline-desc">Leading the architecture and security design of a distributed AI-powered honeypot deception platform. Designed the 3-layer decoupled architecture, ML ensemble pipeline, and automated response system processing 14,681 events/sec.</div>
+        <div class="timeline-title">Academic Project Lead — PhantomNet</div>
+        <div class="timeline-org">Capstone Project, Parul University</div>
+        <div class="timeline-desc">Leading architecture design and backend development of a distributed AI-powered honeypot deception platform. Built 4-protocol honeypots, ML threat scoring pipeline, 20+ FastAPI endpoints, and React SOC dashboard across 21+ weekly development sprints.</div>
         <div class="timeline-tags"><span class="timeline-tag">Python</span><span class="timeline-tag">FastAPI</span><span class="timeline-tag">React</span><span class="timeline-tag">Docker</span><span class="timeline-tag">ML</span></div>
       </div>
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-dot"></div>
-      <div class="timeline-date">2026</div>
+      <div class="timeline-date">Jul 2025 — Present</div>
       <div class="timeline-card">
-        <div class="timeline-title">Full-Stack AI Developer</div>
-        <div class="timeline-org">AI-Powered Health Assistant — Personal Project</div>
-        <div class="timeline-desc">Built a premium symptom analysis platform with Gemini 2.0 Flash, featuring NLP preprocessing, voice dictation, and zero-fail dual-engine diagnostics with privacy-first local storage architecture.</div>
-        <div class="timeline-tags"><span class="timeline-tag">React</span><span class="timeline-tag">TypeScript</span><span class="timeline-tag">Gemini AI</span><span class="timeline-tag">NLP</span></div>
+        <div class="timeline-title">Cybersecurity Content & Research Associate</div>
+        <div class="timeline-org">Vexorion Quantum AI</div>
+        <div class="timeline-desc">Conducting cybersecurity research on real-world threats, ransomware campaigns, and SOC detection strategies. Working with Splunk, Wazuh, ELK Stack, Burp Suite, and OSINT frameworks to analyze attack patterns.</div>
+        <div class="timeline-tags"><span class="timeline-tag">Splunk</span><span class="timeline-tag">Wazuh</span><span class="timeline-tag">ELK Stack</span><span class="timeline-tag">OSINT</span><span class="timeline-tag">Research</span></div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Jan — Feb 2025</div>
+      <div class="timeline-card">
+        <div class="timeline-title">AI Project Intern</div>
+        <div class="timeline-org">Edunet Foundation (Microsoft, SAP, AICTE TechSaksham)</div>
+        <div class="timeline-desc">Completed a 4-week AICTE TechSaksham internship developing an AI-Powered Health Assistant with NLP symptom analysis. Evaluated by Microsoft and SAP industry experts, earning certifications upon completion.</div>
+        <div class="timeline-tags"><span class="timeline-tag">AI</span><span class="timeline-tag">NLP</span><span class="timeline-tag">React</span><span class="timeline-tag">Microsoft</span></div>
       </div>
     </div>
     <div class="timeline-item reveal">
@@ -337,8 +356,8 @@
       <div class="timeline-date">2025</div>
       <div class="timeline-card">
         <div class="timeline-title">Cybersecurity Intern</div>
-        <div class="timeline-org">Red User</div>
-        <div class="timeline-desc">Gained hands-on experience in cybersecurity operations, vulnerability assessment, and security tooling in a professional internship environment.</div>
+        <div class="timeline-org">Red User Technologies</div>
+        <div class="timeline-desc">Security operations support, vulnerability assessment, and defensive security tasks in a professional environment.</div>
         <div class="timeline-tags"><span class="timeline-tag">Security Operations</span><span class="timeline-tag">Vulnerability Assessment</span></div>
       </div>
     </div>
@@ -348,7 +367,7 @@
       <div class="timeline-card">
         <div class="timeline-title">Software Development Intern</div>
         <div class="timeline-org">ShadowFox</div>
-        <div class="timeline-desc">Worked on software development projects, strengthening engineering fundamentals and practical development skills.</div>
+        <div class="timeline-desc">Full-stack software development, strengthening engineering fundamentals and practical development skills.</div>
         <div class="timeline-tags"><span class="timeline-tag">Software Development</span><span class="timeline-tag">Engineering</span></div>
       </div>
     </div>
@@ -358,7 +377,7 @@
       <div class="timeline-card">
         <div class="timeline-title">Development Intern</div>
         <div class="timeline-org">TechnoHacks</div>
-        <div class="timeline-desc">Contributed to development projects and gained exposure to production engineering workflows and team collaboration practices.</div>
+        <div class="timeline-desc">Development projects and team collaboration practices.</div>
         <div class="timeline-tags"><span class="timeline-tag">Development</span><span class="timeline-tag">Collaboration</span></div>
       </div>
     </div>
@@ -368,7 +387,7 @@
       <div class="timeline-card">
         <div class="timeline-title">Cybersecurity Intern</div>
         <div class="timeline-org">Prodigy InfoTech</div>
-        <div class="timeline-desc">Built network packet analyzers, security assessment tools, and password strength checkers. Applied cybersecurity concepts in practical engineering projects.</div>
+        <div class="timeline-desc">Built network packet analyzers, password strength tools, and security assessment scripts. Applied cybersecurity concepts in practical engineering projects.</div>
         <div class="timeline-tags"><span class="timeline-tag">Network Analysis</span><span class="timeline-tag">Shell Scripting</span><span class="timeline-tag">Security Tools</span></div>
       </div>
     </div>
@@ -378,9 +397,51 @@
       <div class="timeline-card">
         <div class="timeline-title">Security Practitioner</div>
         <div class="timeline-org">TryHackMe Labs</div>
-        <div class="timeline-desc">Continuously practicing offensive and defensive security techniques through hands-on CTF challenges, penetration testing labs, and real-world security scenarios.</div>
+        <div class="timeline-desc">Continuously practicing offensive and defensive security techniques through hands-on CTF challenges and penetration testing labs.</div>
         <div class="timeline-tags"><span class="timeline-tag">CTF</span><span class="timeline-tag">Penetration Testing</span><span class="timeline-tag">TryHackMe</span></div>
       </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+<div class="container">
+  <div class="section-header reveal">
+    <div class="section-label">Credentials</div>
+    <h2 class="section-title">Certifications & <span class="gradient-text">Training</span></h2>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card reveal">
+      <div class="cert-icon">🏛️</div>
+      <div class="cert-name">Cybersecurity Foundation</div>
+      <div class="cert-issuer">Palo Alto Networks Academy</div>
+    </div>
+    <div class="cert-card reveal reveal-delay-1">
+      <div class="cert-icon">🔷</div>
+      <div class="cert-name">SC-900: Security, Compliance & Identity</div>
+      <div class="cert-issuer">Microsoft</div>
+    </div>
+    <div class="cert-card reveal reveal-delay-2">
+      <div class="cert-icon">🌐</div>
+      <div class="cert-name">CCNA Certified</div>
+      <div class="cert-issuer">Cisco Networking Academy</div>
+    </div>
+    <div class="cert-card reveal reveal-delay-3">
+      <div class="cert-icon">📋</div>
+      <div class="cert-name">Cybersecurity Analyst Job Simulation</div>
+      <div class="cert-issuer">Tata Group</div>
+    </div>
+  </div>
+  <div class="learning-section reveal">
+    <h3 class="learning-title">Currently Learning</h3>
+    <div class="learning-tags">
+      <span class="learning-tag">Splunk (Advanced SIEM)</span>
+      <span class="learning-tag">Microsoft Sentinel</span>
+      <span class="learning-tag">Threat Hunting</span>
+      <span class="learning-tag">Cloud Security</span>
+      <span class="learning-tag">Secure Software Architecture</span>
     </div>
   </div>
 </div>
@@ -396,13 +457,13 @@
   </div>
   <div class="github-grid reveal">
     <div class="github-card">
-      <img src="https://github-readme-stats.vercel.app/api?username=sriram21-09&show_icons=true&theme=transparent&hide_border=true&title_color=00f0ff&text_color=a1a1aa&icon_color=00ff88&bg_color=0d0d14" alt="GitHub Stats">
+      <img src="https://github-readme-stats-sigma-five.vercel.app/api?username=sriram21-09&show_icons=true&theme=transparent&hide_border=true&title_color=00f0ff&text_color=a1a1aa&icon_color=00ff88&bg_color=0d0d14" alt="GitHub Stats for sriram21-09" loading="lazy">
     </div>
     <div class="github-card">
-      <img src="https://github-readme-streak-stats.herokuapp.com/?user=sriram21-09&theme=transparent&hide_border=true&ring=00f0ff&fire=00ff88&currStreakLabel=00f0ff&sideNums=e4e4e7&sideLabels=a1a1aa&dates=52525b&background=0d0d14" alt="GitHub Streak">
+      <img src="https://github-readme-streak-stats.herokuapp.com/?user=sriram21-09&theme=transparent&hide_border=true&ring=00f0ff&fire=00ff88&currStreakLabel=00f0ff&sideNums=e4e4e7&sideLabels=a1a1aa&dates=52525b&background=0d0d14" alt="GitHub Streak for sriram21-09" loading="lazy">
     </div>
     <div class="github-card">
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sriram21-09&layout=compact&theme=transparent&hide_border=true&title_color=00f0ff&text_color=a1a1aa&bg_color=0d0d14" alt="Top Languages">
+      <img src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=sriram21-09&layout=compact&theme=transparent&hide_border=true&title_color=00f0ff&text_color=a1a1aa&bg_color=0d0d14" alt="Top Languages for sriram21-09" loading="lazy">
     </div>
   </div>
 </div>
@@ -418,21 +479,21 @@
   <div class="contact-grid">
     <div class="contact-info reveal">
       <h3 class="contact-tagline">Let's build something <span class="gradient-text">secure</span> together.</h3>
-      <p class="contact-desc">I'm always open to discussing cybersecurity projects, engineering challenges, internship opportunities, or just connecting with fellow security enthusiasts. Reach out through any channel below.</p>
+      <p class="contact-desc">I'm open to SOC analyst positions, cybersecurity internships, detection engineering roles, and security research opportunities. Reach out through any channel below.</p>
       <div class="contact-links">
         <a href="mailto:sriramkasukurthi2109@gmail.com" class="contact-link">
           <span class="contact-link-icon">✉️</span>
           <div><div class="contact-link-label">Email</div><div class="contact-link-value">sriramkasukurthi2109@gmail.com</div></div>
         </a>
-        <a href="https://github.com/sriram21-09" target="_blank" class="contact-link">
+        <a href="https://github.com/sriram21-09" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span class="contact-link-icon">💻</span>
           <div><div class="contact-link-label">GitHub</div><div class="contact-link-value">@sriram21-09</div></div>
         </a>
-        <a href="https://linkedin.com/in/sriram-kasukurthi-600027275" target="_blank" class="contact-link">
+        <a href="https://linkedin.com/in/sriram-kasukurthi-600027275" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span class="contact-link-icon">🔗</span>
           <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-value">Kasukurthi Sriram</div></div>
         </a>
-        <a href="https://tryhackme.com/p/sriram.2109" target="_blank" class="contact-link">
+        <a href="https://tryhackme.com/p/sriram.2109" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span class="contact-link-icon">🎯</span>
           <div><div class="contact-link-label">TryHackMe</div><div class="contact-link-value">sriram.2109</div></div>
         </a>
@@ -441,11 +502,11 @@
     <form class="contact-form reveal reveal-delay-2" action="https://formspree.io/f/mwvzravw" method="POST">
       <div class="form-group">
         <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" placeholder="John Doe" required>
+        <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name">
       </div>
       <div class="form-group">
         <label for="email">Your Email</label>
-        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+        <input type="email" id="email" name="email" placeholder="john@example.com" required autocomplete="email">
       </div>
       <div class="form-group">
         <label for="message">Message</label>
@@ -458,12 +519,12 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
+<footer class="footer" role="contentinfo">
 <div class="container">
   <p class="footer-text">Designed & Built by <strong>Kasukurthi Sriram</strong> with <span class="heart">♥</span></p>
   <div class="footer-links">
-    <a href="https://github.com/sriram21-09" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/sriram-kasukurthi-600027275" target="_blank">LinkedIn</a>
+    <a href="https://github.com/sriram21-09" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://linkedin.com/in/sriram-kasukurthi-600027275" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="mailto:sriramkasukurthi2109@gmail.com">Email</a>
   </div>
 </div>

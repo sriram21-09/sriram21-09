@@ -1,266 +1,252 @@
 /* ═══════════════════════════════════════════
-   Kasukurthi Sriram — Portfolio Scripts
+   PORTFOLIO JS — Kasukurthi Sriram
    ═══════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initTyping();
+  initCounters();
   initScrollReveal();
   initCanvas();
-  initCounters();
-  initTerminal();
+  initTerminalLive();
 });
 
-/* ─── Navigation ─── */
+/* ═══════════ NAV ═══════════ */
 function initNav() {
-  const nav = document.querySelector('.nav');
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-  const links = document.querySelectorAll('.nav-links a');
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  if (!hamburger || !navLinks) return;
 
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  hamburger?.addEventListener('click', () => {
+  hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
-    navLinks.classList.toggle('open');
-    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    navLinks.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', navLinks.classList.contains('active'));
   });
 
-  links.forEach(link => {
+  // Close mobile nav on link click
+  navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      hamburger?.classList.remove('active');
-      navLinks?.classList.remove('open');
-      document.body.style.overflow = '';
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
     });
   });
+
+  // Active link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const onScroll = () => {
+    const scrollY = window.scrollY + 100;
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
+      const link = navLinks.querySelector(`a[href="#${id}"]`);
+      if (link) {
+        if (scrollY >= top && scrollY < top + height) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      }
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
 }
 
-/* ─── Typing Animation ─── */
+/* ═══════════ TYPING EFFECT ═══════════ */
 function initTyping() {
   const el = document.getElementById('typingText');
   if (!el) return;
 
   const phrases = [
-    'Cybersecurity Engineer',
-    'Detection Builder',
-    'Systems Architect',
-    'Threat Intelligence Developer',
-    'Security Automation Engineer'
+    'SOC Analyst',
+    'Detection Engineer',
+    'Honeypot Builder',
+    'Threat Hunter',
+    'Security Researcher',
+    'Incident Responder'
   ];
 
-  let phraseIndex = 0, charIndex = 0, isDeleting = false;
+  let phraseIdx = 0, charIdx = 0, deleting = false;
 
   function type() {
-    const current = phrases[phraseIndex];
+    const current = phrases[phraseIdx];
+    el.textContent = deleting
+      ? current.substring(0, charIdx--)
+      : current.substring(0, charIdx++);
 
-    if (isDeleting) {
-      el.textContent = current.substring(0, charIndex - 1);
-      charIndex--;
-    } else {
-      el.textContent = current.substring(0, charIndex + 1);
-      charIndex++;
+    if (!deleting && charIdx > current.length) {
+      setTimeout(() => { deleting = true; type(); }, 2000);
+      return;
     }
-
-    let delay = isDeleting ? 40 : 80;
-
-    if (!isDeleting && charIndex === current.length) {
-      delay = 2200;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-      delay = 500;
+    if (deleting && charIdx < 0) {
+      deleting = false;
+      phraseIdx = (phraseIdx + 1) % phrases.length;
+      setTimeout(type, 400);
+      return;
     }
-
-    setTimeout(type, delay);
+    setTimeout(type, deleting ? 40 : 80);
   }
-
   type();
 }
 
-/* ─── Scroll Reveal ─── */
+/* ═══════════ ANIMATED COUNTERS ═══════════ */
+function initCounters() {
+  const counters = document.querySelectorAll('[data-count]');
+  const speed = 200;
+
+  const countUp = (counter) => {
+    const target = +counter.getAttribute('data-count');
+    const suffix = counter.getAttribute('data-suffix') || '';
+    const updateCount = () => {
+      const targetInt = target;
+      const count = +counter.innerText.replace(/\D/g, '');
+      const inc = targetInt / speed;
+      
+      if (count < targetInt) {
+        counter.innerText = Math.ceil(count + inc) + suffix;
+        setTimeout(updateCount, 15);
+      } else {
+        counter.innerText = target + suffix;
+      }
+    };
+    updateCount();
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        countUp(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(counter => observer.observe(counter));
+}
+
+/* ═══════════ SCROLL REVEAL ═══════════ */
 function initScrollReveal() {
+  // Skip if user prefers reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const elements = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  elements.forEach(el => observer.observe(el));
 }
 
-/* ─── Hero Canvas Grid ─── */
+/* ═══════════ CANVAS BACKGROUND ═══════════ */
 function initCanvas() {
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
 
+  // Skip canvas animation for reduced motion preference
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   const ctx = canvas.getContext('2d');
-  let width, height, dots = [];
-  let mouse = { x: -1000, y: -1000 };
+  let particles = [];
+  let animating = true;
 
   function resize() {
-    width = canvas.width = canvas.parentElement.offsetWidth;
-    height = canvas.height = canvas.parentElement.offsetHeight;
-    createDots();
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Create particles
+  const count = Math.min(80, Math.floor(canvas.width * canvas.height / 15000));
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      r: Math.random() * 1.5 + 0.5,
+      opacity: Math.random() * 0.4 + 0.1
+    });
   }
 
-  function createDots() {
-    dots = [];
-    const spacing = 60;
-    for (let x = 0; x < width; x += spacing) {
-      for (let y = 0; y < height; y += spacing) {
-        dots.push({ x, y, baseX: x, baseY: y, opacity: Math.random() * 0.3 + 0.05 });
-      }
-    }
-  }
+  function draw() {
+    if (!animating) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  function animate() {
-    ctx.clearRect(0, 0, width, height);
-
-    dots.forEach(dot => {
-      const dx = mouse.x - dot.x;
-      const dy = mouse.y - dot.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      const maxDist = 150;
-
-      let opacity = dot.opacity;
-      let size = 1;
-
-      if (dist < maxDist) {
-        const factor = 1 - dist / maxDist;
-        opacity = Math.min(dot.opacity + factor * 0.5, 0.7);
-        size = 1 + factor * 1.5;
-      }
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
       ctx.beginPath();
-      ctx.arc(dot.x, dot.y, size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 240, 255, ${opacity})`;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0, 240, 255, ${p.opacity})`;
       ctx.fill();
-
-      // Draw connections to nearby dots on hover
-      if (dist < maxDist) {
-        dots.forEach(other => {
-          const odx = dot.x - other.x;
-          const ody = dot.y - other.y;
-          const odist = Math.sqrt(odx * odx + ody * ody);
-          if (odist < 80 && odist > 0) {
-            const factor = 1 - dist / maxDist;
-            ctx.beginPath();
-            ctx.moveTo(dot.x, dot.y);
-            ctx.lineTo(other.x, other.y);
-            ctx.strokeStyle = `rgba(0, 240, 255, ${factor * 0.15})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        });
-      }
     });
 
-    requestAnimationFrame(animate);
-  }
-
-  canvas.addEventListener('mousemove', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-
-  canvas.addEventListener('mouseleave', () => {
-    mouse.x = -1000;
-    mouse.y = -1000;
-  });
-
-  window.addEventListener('resize', resize);
-  resize();
-  animate();
-}
-
-/* ─── Counter Animation ─── */
-function initCounters() {
-  const counters = document.querySelectorAll('[data-count]');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.dataset.counted) {
-        entry.target.dataset.counted = 'true';
-        animateCounter(entry.target);
+    // Connection lines
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(0, 240, 255, ${0.06 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
       }
-    });
-  }, { threshold: 0.5 });
-
-  counters.forEach(el => observer.observe(el));
-}
-
-function animateCounter(el) {
-  const target = parseInt(el.dataset.count);
-  const suffix = el.dataset.suffix || '';
-  const duration = 1800;
-  const start = performance.now();
-
-  function update(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    // Ease out cubic
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const current = Math.round(eased * target);
-
-    el.textContent = current.toLocaleString() + suffix;
-
-    if (progress < 1) requestAnimationFrame(update);
-  }
-
-  requestAnimationFrame(update);
-}
-
-/* ─── Smooth scroll for anchor links ─── */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
     }
-  });
-});
+    requestAnimationFrame(draw);
+  }
+  draw();
 
-/* ─── Terminal Live Log ─── */
-function initTerminal() {
+  // Pause when hero is not visible
+  const heroObserver = new IntersectionObserver(([entry]) => {
+    animating = entry.isIntersecting;
+    if (animating) requestAnimationFrame(draw);
+  }, { threshold: 0 });
+  heroObserver.observe(canvas.closest('.hero'));
+}
+
+/* ═══════════ TERMINAL LIVE LOG ═══════════ */
+function initTerminalLive() {
   const el = document.getElementById('terminalLive');
   if (!el) return;
 
-  const logs = [
-    '<span class="t-yellow">⚠</span> <span class="t-gray">[ALERT]</span> SSH brute-force — <span class="t-cyan">192.168.1.47</span> → score: <span class="t-yellow">0.92</span>',
-    '<span class="t-green">▶</span> <span class="t-gray">[RESP]</span> Playbook executed — IP blocked, PCAP saved',
-    '<span class="t-green">▶</span> <span class="t-gray">[INFO]</span> Processing <span class="t-cyan">14,681</span> events/sec',
-    '<span class="t-yellow">⚠</span> <span class="t-gray">[ALERT]</span> HTTP scan detected — <span class="t-cyan">10.0.0.83</span> → score: <span class="t-yellow">0.88</span>',
-    '<span class="t-green">▶</span> <span class="t-gray">[SHAP]</span> Top feature: <span class="t-cyan">port_scan_rate</span> = 0.41',
-    '<span class="t-green">▶</span> <span class="t-gray">[INFO]</span> STIX 2.1 bundle exported — 23 indicators',
-    '<span class="t-yellow">⚠</span> <span class="t-gray">[ALERT]</span> FTP honeypot triggered — <span class="t-cyan">172.16.0.12</span>',
-    '<span class="t-green">▶</span> <span class="t-gray">[ML]</span> Ensemble latency: <span class="t-cyan">16ms</span> avg',
+  const events = [
+    { icon: '🔴', type: 'ALERT', msg: 'SSH brute-force from 185.220.101.x — threat_score: 0.92' },
+    { icon: '🟡', type: 'WARN', msg: 'HTTP honeypot: SQLi probe detected on /admin — MITRE T1190' },
+    { icon: '🟢', type: 'INFO', msg: 'FTP honeypot: anonymous login captured — logging credentials' },
+    { icon: '🔴', type: 'ALERT', msg: 'SMTP relay abuse attempt — attacker profiled (GeoIP: RU)' },
+    { icon: '🟡', type: 'WARN', msg: 'Anomaly detected: port scan sweep (Isolation Forest score: -0.87)' },
+    { icon: '🟢', type: 'INFO', msg: 'ML retrain pipeline triggered — Random Forest accuracy: 0.94' },
+    { icon: '🟡', type: 'WARN', msg: 'HTTP honeypot: directory traversal attempt (../../../etc/passwd)' },
+    { icon: '🔴', type: 'ALERT', msg: 'TAXII feed updated — 14 new threat indicators exported (STIX 2.1)' },
+    { icon: '🟢', type: 'INFO', msg: 'WebSocket: 3 SOC dashboard clients connected' },
+    { icon: '🟡', type: 'WARN', msg: 'SSH: credential stuffing detected — top password: admin123' },
   ];
 
-  let i = 0;
-  function nextLog() {
-    el.innerHTML = logs[i % logs.length];
+  let idx = 0;
+  function showEvent() {
+    const e = events[idx % events.length];
+    const colors = { ALERT: '#ef4444', WARN: '#f59e0b', INFO: '#00ff88' };
+    el.innerHTML = `<span class="t-green">▶</span> <span style="color:${colors[e.type]}">[${e.type}]</span> <span class="t-gray">${e.msg}</span>`;
     el.style.opacity = '0';
-    requestAnimationFrame(() => { el.style.transition = 'opacity 0.4s'; el.style.opacity = '1'; });
-    i++;
-    setTimeout(nextLog, 2800);
+    el.style.animation = 'none';
+    el.offsetHeight; // Force reflow
+    el.style.animation = 'logAppear 0.4s forwards';
+    idx++;
+    setTimeout(showEvent, 3500);
   }
-  setTimeout(nextLog, 4000);
+  setTimeout(showEvent, 2000);
 }
-
-/* ─── GitHub Image Fallback ─── */
-document.querySelectorAll('.github-card img').forEach(img => {
-  img.addEventListener('error', function () {
-    this.style.display = 'none';
-    const fallback = document.createElement('div');
-    fallback.style.cssText = 'padding:40px;text-align:center;color:#52525b;font-size:0.9rem;';
-    fallback.textContent = 'Stats loading...';
-    this.parentElement.appendChild(fallback);
-  });
-});
