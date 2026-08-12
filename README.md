@@ -7,7 +7,7 @@
 Building security systems that detect, analyze, and respond to threats — not just monitor them.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/sriram-kasukurthi-600027275)
-[![Portfolio](https://img.shields.io/badge/Portfolio-0d0d14?style=for-the-badge&logo=googlechrome&logoColor=00f0ff)](https://sriram21-09.github.io)
+[![Portfolio](https://img.shields.io/badge/Portfolio-0d0d14?style=for-the-badge&logo=googlechrome&logoColor=00f0ff)](https://sriram21-09.github.io/sriram21-09//sriram21-09//sriram21-09//sriram21-09//sriram21-09//sriram21-09//sriram21-09//sriram21-09//sriram21-09//sriram21-09//sriram21-09/)
 [![TryHackMe](https://img.shields.io/badge/TryHackMe-212C42?style=for-the-badge&logo=tryhackme&logoColor=white)](https://tryhackme.com/p/sriram.2109)
 [![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sriramkasukurthi2109@gmail.com)
 
@@ -192,6 +192,6 @@ Scikit-Learn · TensorFlow · SHAP · MLflow · Pandas · NumPy · Ensemble Meth
 
 *Building systems where security is the architecture, not the afterthought.*
 
-**[Portfolio](https://sriram21-09.github.io)** · **[LinkedIn](https://linkedin.com/in/sriram-kasukurthi-600027275)** · **[sriramkasukurthi2109@gmail.com](mailto:sriramkasukurthi2109@gmail.com)**
+**[Portfolio](https://sriram21-09.github.io/sriram21-09/)** · **[LinkedIn](https://linkedin.com/in/sriram-kasukurthi-600027275)** · **[sriramkasukurthi2109@gmail.com](mailto:sriramkasukurthi2109@gmail.com)**
 
 </div>
