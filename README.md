@@ -177,7 +177,7 @@ Scikit-Learn · TensorFlow · SHAP · MLflow · Pandas · NumPy · Ensemble Meth
 <div align="center">
 
 <a href="https://github.com/sriram21-09">
-  <img height="170" src="https://github-readme-stats-sigma-five.vercel.app/api?username=sriram21-09&show_icons=true&theme=github_dark&hide_border=true&bg_color=00000000&title_color=58a6ff&text_color=8b949e&icon_color=3fb950&ring_color=58a6ff" />
+  <img height="170" src="https://github-readme-stats.vercel.app/api?username=sriram21-09&show_icons=true&theme=github_dark&hide_border=true&bg_color=00000000&title_color=58a6ff&text_color=8b949e&icon_color=3fb950&ring_color=58a6ff" />
 </a>
 &nbsp;&nbsp;
 <a href="https://github.com/sriram21-09">
